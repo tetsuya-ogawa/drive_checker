@@ -1,0 +1,14 @@
+version: '2'
+services:
+  mongodb:
+    image: mongo:3.6.4
+    ports:
+      - "127.0.0.1:27017:27017"
+    environment:
+      - MONGODB_USER=user
+      - MONGODB_PASS=password
+    volumes:
+      - 'data-volume:/data/db'
+
+volumes:
+  data-volume:

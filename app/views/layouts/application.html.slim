@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    title DriveCheck
+    = csrf_meta_tags
+
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body data-redux_page="#{content_for?(:redux_page) ? yield(:redux_page) : 'DefaultIndex'}"
+    = yield
