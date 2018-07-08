@@ -12,8 +12,8 @@ function mapDispatchToProps(dispatch) {
             console.log(file)
             // dispatch({type: 'hoge', payload: { file: { name: 'fileee', owner: 'ownerrr' } }})
         },
-        add() {
-            dispatch(getFiles())
+        add(params) {
+            dispatch(getFiles(params))
         },
     }
 }

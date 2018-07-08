@@ -7,7 +7,6 @@ end
 
 gem 'bson_ext'
 gem 'dotenv-rails', '~> 2.2.1'
-gem 'google_drive'
 gem 'google-api-client'
 gem 'mongoid'
 gem 'omniauth-google-oauth2'

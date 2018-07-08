@@ -18,7 +18,7 @@ export default class Files extends React.Component {
 
     onScroll() {
         if (300 > this.getScrollBottom() && !this.props.isFetching) {
-            this.props.add()
+            this.props.add({next_page_token: this.props.nextPageToken})
         }
     }
 

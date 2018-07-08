@@ -9,8 +9,9 @@ const getFilesSuccess = (json) => {
     return {
         type: 'GET_FILES_SUCCESS',
         payload: {
-            data: json,
-            receivedAt: Date.now()
+            data: json.files,
+            nextPageToken: json.next_page_token,
+            receivedAt: Date.now(),
         }
     }
 }
@@ -24,12 +25,12 @@ const getFilesFailure = (error) => {
     }
 }
 
-export const getFiles = () => {
+export const getFiles = params => {
     return (dispatch) => {
         dispatch(getFilesRequest())
-        return axios.get('/api/v1/files')
+        return axios.get('/api/v1/files', { params: params })
             .then(res => {
-                dispatch(getFilesSuccess(res.data.files))
+                dispatch(getFilesSuccess(res.data))
                 }
             ).catch(err =>
                 dispatch(getFilesFailure(err))

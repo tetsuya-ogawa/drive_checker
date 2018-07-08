@@ -1,5 +1,6 @@
 const initialState = {
     isFetching: false,
+    nextPageToken: null,
     files: [],
 }
 
@@ -19,6 +20,7 @@ export default function filesReducer(state = initialState, action) {
             return {
                 ...state,
                 isFetching: false,
+                nextPageToken: (action.payload.nextPageToken),
                 files: state.files.concat(action.payload.data)
             }
         case 'GET_FILES_FAILURE':
