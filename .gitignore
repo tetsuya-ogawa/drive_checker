@@ -26,3 +26,9 @@
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+
+.env
+
+# 一時的に使用
+lib/master
+

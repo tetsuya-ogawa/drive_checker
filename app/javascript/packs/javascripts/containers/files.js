@@ -1,14 +1,19 @@
 import { connect } from 'react-redux'
-import Files from '../components/files'
+import Files from '../components/files/files'
+import { getFiles } from '../actions/files/index'
 
 function mapStateToProps({ files }){
-    return { files }
+    return files
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        hoge() {
-            dispatch({type: 'hoge', payload: { file: 'test' }})
+        hoge(file) {
+            console.log(file)
+            // dispatch({type: 'hoge', payload: { file: { name: 'fileee', owner: 'ownerrr' } }})
+        },
+        add(params) {
+            dispatch(getFiles(params))
         },
     }
 }
