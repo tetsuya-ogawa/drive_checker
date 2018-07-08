@@ -1,3 +1,5 @@
+require 'google/apis/drive_v3'
+
 module GoogleOauth
   extend ActiveSupport::Concern
 
