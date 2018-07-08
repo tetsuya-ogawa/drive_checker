@@ -6,8 +6,10 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bson_ext'
-gem 'google-api-client', require: 'google/api_client'
+gem 'dotenv-rails', '~> 2.2.1'
+gem 'google-api-client'
 gem 'mongoid'
+gem 'omniauth-google-oauth2'
 gem 'rails', '~> 5.1.5'
 gem 'sqlite3'
 gem 'puma', '~> 3.7'
@@ -23,6 +25,9 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'foreman'
+  gem 'pry-byebug'
+  gem 'pry-doc'
+  gem 'pry-rails'
 end
 
 group :development do

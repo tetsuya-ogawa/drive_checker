@@ -10,6 +10,11 @@ export default function filesReducer(state = initialState, action) {
                 ...state,
                 files: state.files.concat([action.payload.file])
             }
+        case 'add':
+            return {
+                ...state,
+                files: state.files.concat(action.payload.files)
+            }
         default:
             return state
         }
