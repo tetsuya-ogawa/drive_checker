@@ -1,19 +1,30 @@
 const initialState = {
-    files: [{name: 'file名', owner: '社長'}],
+    isFetching: false,
+    files: [],
 }
 
 export default function filesReducer(state = initialState, action) {
     switch(action.type) {
         case 'hoge':
-            console.log(state)
             return {
                 ...state,
                 files: state.files.concat([action.payload.file])
             }
-        case 'add':
+        case 'GET_FILES_REQUEST':
             return {
                 ...state,
-                files: state.files.concat(action.payload.files)
+                isFetching: true
+            }
+        case 'GET_FILES_SUCCESS':
+            return {
+                ...state,
+                isFetching: false,
+                files: state.files.concat(action.payload.data)
+            }
+        case 'GET_FILES_FAILURE':
+            return {
+                ...state,
+                isFetching: false,
             }
         default:
             return state

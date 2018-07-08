@@ -4,17 +4,17 @@ import File from './file'
 export default class Files extends React.Component {
 
     componentWillMount() {
-        this.props.add([{name: '追加ファイル', owner: 'オーナー1'}, {name: '追加ファイル2', owner: 'オーナー2'}])
+        this.props.add()
     }
 
     render() {
-        console.log(this.props)
-        const fileItems = this.props.files.map( (file, idx) => <li onClick={() => this.props.hoge()} key={idx}>{file.name}</li> )
+        const fetching =  this.props.isFetching ? '取得中' : ''
+        const fileItems = this.props.files.map( (file, idx) => <File file={file} hoge={this.props.hoge} key={idx} /> )
         return (
             <div>
                 <h1>ファイル一覧</h1>
-                <ul>{fileItems}</ul>
-                <File />
+                <p>{fetching}</p>
+                <div className="fileItem">{fileItems}</div>
             </div>
         )
     }

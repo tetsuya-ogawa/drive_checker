@@ -1,7 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux'
 import { render } from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk'
 import RootReducer from '../reducers/index'
 import Files from './files/index'
 
@@ -14,7 +15,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const Container = PAGE_CONTAINERS[namespace];
 
-    const store = createStore(RootReducer)
+    const store = createStore(
+        RootReducer,
+        applyMiddleware(thunk)
+    )
 
     render(
         <Provider store={store}>

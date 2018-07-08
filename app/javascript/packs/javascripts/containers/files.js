@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import Files from '../components/files/files'
+import { getFiles } from '../actions/files/index'
 
 function mapStateToProps({ files }){
     return files
@@ -7,11 +8,12 @@ function mapStateToProps({ files }){
 
 function mapDispatchToProps(dispatch) {
     return {
-        hoge() {
-            dispatch({type: 'hoge', payload: { file: { name: 'fileee', owner: 'ownerrr' } }})
+        hoge(file) {
+            console.log(file)
+            // dispatch({type: 'hoge', payload: { file: { name: 'fileee', owner: 'ownerrr' } }})
         },
-        add(files) {
-            dispatch({type: 'add', payload: { files }})
+        add() {
+            dispatch(getFiles())
         },
     }
 }
