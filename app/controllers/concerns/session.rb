@@ -2,19 +2,19 @@ module Session
   extend ActiveSupport::Concern
 
   def create_session(account)
-    session[:uid] = user.uid
+    session[:uid] = account.uid
   end
 
   def destroy_session
     session.delete :uid
   end
 
-  def current_user
+  def current_account
     @current_account ||= Account.find_by(uid: uid) rescue nil
   end
 
   def logged_in?
-    !current_user.nil?
+    !current_account.nil?
   end
 
   private
