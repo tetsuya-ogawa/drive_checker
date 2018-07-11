@@ -7,7 +7,8 @@ class Api::V1::FilesController < ApplicationController
     file_list = drive_service(current_account)
                     .list_files(fields: 'next_page_token, files(id, name, owners, permissions, webViewLink, capabilities, mimeType, parents)',
                                 page_token: next_page_token,
-                                spaces: 'drive')
+                                spaces: 'drive',
+                                page_size: 10)
     render json: { files: file_list.files.map{ |file| file_to_hash(file) }, next_page_token: file_list.next_page_token }
   end
 
