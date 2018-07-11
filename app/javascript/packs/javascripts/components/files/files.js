@@ -36,7 +36,7 @@ export default class Files extends React.Component {
             <div>
                 <h1>ファイル一覧</h1>
                 <div className="fileItem">{fileItems}</div>
-                <p>{fetching}</p>
+                <p><strong>{fetching}</strong></p>
             </div>
         )
     }
