@@ -1,27 +1,26 @@
-version: '2'
+version: '3'
 services:
-  mongodb:
+  db:
     image: mongo:3.6.4
     ports:
-      - "127.0.0.1:27017:27017"
-    environment:
-      - MONGODB_USER=user
-      - MONGODB_PASS=password
+      - "27017:27017"
+    env_file: ./.env
     volumes:
       - 'data-volume:/data/db'
-#  rails:
-#    build:
-#      context: .
-#      dockerfile: ./docker/rails/Dockerfile
-#    ports:
-#      - "127.0.0.1:3000:3000"
-#    links:
-#      - mongodb
-#    environment:
-#      - RAILS_ENV=production
-#      - DB_RESET=false
-#      - SECRET_KEY_BASE=xxxxxxxxxxxx
-#    restart: always
+    container_name: mongodb
+  rails:
+    build:
+      context: .
+      dockerfile: ./docker/rails/Dockerfile
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    environment:
+      - RAILS_ENV=production
+      - DB_RESET=false
+    env_file: ./.env
+    restart: always
 #  nginx:
 #    build:
 #      context: .
