@@ -5,7 +5,7 @@ development:
     default:
       database: drive_checker_development
       hosts:
-        - localhost:27017
+        - 127.0.0.1:27017
       options:
   options:
 
@@ -14,7 +14,7 @@ production:
     default:
       database: drive_checker
       hosts:
-        - localhost:27017
+        - mongodb:27017
       options:
   options:
 
